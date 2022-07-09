@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar {
+  background: white;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+html,
+body {
+  overflow: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  outline: 0;
+}
+
+.tabContainer {
+  display: grid;
+  border: solid 2px red;
+  background: white;
+}
+
+.tab {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: solid 2px red;
+  background: white;
+  width: 50em;
+  height: 10em;
+  opacity: 0;
+}
+
+.btn {
+  position: absolute;
+  bottom: 10px;
+  background: white;
+  opacity: 0;
+}
+
+.Show {
+  opacity: 100;
+}
