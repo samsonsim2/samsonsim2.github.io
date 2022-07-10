@@ -121,15 +121,15 @@ scene.background = backgroundTexture
 
 console.log(canvas)
 //Lights
-const ambientLight = new THREE.AmbientLight()
-ambientLight.color = new THREE.Color(0xffffff)
-ambientLight.intensity = 1
-scene.add(ambientLight)
+// const ambientLight = new THREE.AmbientLight()
+// ambientLight.color = new THREE.Color(0xffffff)
+// ambientLight.intensity = 1
+// scene.add(ambientLight)
 
 // Directional light
-const directionalLight = new THREE.DirectionalLight(0xfffffc, 1)
-directionalLight.position.set(1, 0.25, 0)
-scene.add(directionalLight)
+// const directionalLight = new THREE.DirectionalLight(0xfffffc, 1)
+// directionalLight.position.set(1, 0.25, 0)
+// scene.add(directionalLight)
 //animation
 const clock = new THREE.Clock()
 
@@ -148,49 +148,148 @@ function createBox() {
 }
 
 const textureLoader = new THREE.TextureLoader()
-const bakedTexture = textureLoader.load('./models/Platonic/RoomUV.jpg')
-bakedTexture.flipY = false
+const baseTexture = textureLoader.load('./Textures/BaseUV.jpg')
+baseTexture.flipY = false
 
-function createFigure() {
+const counterTexture = textureLoader.load('./Textures/CounterUV.jpg')
+counterTexture.flipY = false
+const tableTexture = textureLoader.load('./Textures/TableUV.jpg')
+tableTexture.flipY = false
+const productTexture = textureLoader.load('./Textures/ProductUV.jpg')
+productTexture.flipY = false
+const doorTexture = textureLoader.load('./Textures/DoorUV.jpg')
+doorTexture.flipY = false
+const menuTexture = textureLoader.load('./Textures/MenuUV.jpg')
+menuTexture.flipY = false
+const coffeemachineTexture = textureLoader.load(
+  './Textures/CoffeeMachineUV.jpg'
+)
+coffeemachineTexture.flipY = false
+const plantTexture = textureLoader.load('./Textures/R_plantUV.jpg')
+plantTexture.flipY = false
+
+function createBase() {
   const gltfLoader = new GLTFLoader()
 
-  gltfLoader.load('/models/clickScene/room.gltf', (gltf) => {
+  gltfLoader.load('/models/Base.gltf', (gltf) => {
     const figure = gltf.scene.children[0]
-    const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture })
+    const bakedMaterial = new THREE.MeshBasicMaterial({ map: baseTexture })
     figure.material = bakedMaterial
     scene.add(figure)
-    figure.userData.name = 'figure'
+    figure.userData.name = 'Base'
   })
 }
 
-function createSphere() {
+function createCounter() {
   const gltfLoader = new GLTFLoader()
 
-  gltfLoader.load('/models/clickScene/Sphere.gltf', (gltf) => {
+  gltfLoader.load('/models/Counter.gltf', (gltf) => {
     const sphere = gltf.scene.children[0]
-    const bakedMaterial = new THREE.MeshPhongMaterial({ color: 'red' })
+    const bakedMaterial = new THREE.MeshBasicMaterial({ map: counterTexture })
     sphere.material = bakedMaterial
     scene.add(sphere)
-    sphere.userData.name = 'sphere'
+    sphere.userData.name = 'Counter'
   })
 }
 
-function createPlatonic() {
+function createTable() {
   const gltfLoader = new GLTFLoader()
 
-  gltfLoader.load('/models/clickScene/Platonic.gltf', (gltf) => {
+  gltfLoader.load('/models/Table.gltf', (gltf) => {
     const platonic = gltf.scene.children[0]
-    const bakedMaterial = new THREE.MeshPhongMaterial({ color: 'red' })
+    const bakedMaterial = new THREE.MeshBasicMaterial({ map: tableTexture })
     platonic.material = bakedMaterial
     scene.add(platonic)
-    platonic.userData.name = 'platonic'
+    platonic.userData.name = 'Table'
   })
 }
 
-createPlatonic()
-createFigure()
-createSphere()
+function createProduct() {
+  const gltfLoader = new GLTFLoader()
 
+  gltfLoader.load('/models/Product.gltf', (gltf) => {
+    const platonic = gltf.scene.children[0]
+    const bakedMaterial = new THREE.MeshBasicMaterial({ map: productTexture })
+    platonic.material = bakedMaterial
+    scene.add(platonic)
+    platonic.userData.name = 'Product'
+  })
+}
+
+function createDoor() {
+  const gltfLoader = new GLTFLoader()
+
+  gltfLoader.load('/models/Door.gltf', (gltf) => {
+    const platonic = gltf.scene.children[0]
+    const bakedMaterial = new THREE.MeshBasicMaterial({ map: doorTexture })
+    platonic.material = bakedMaterial
+    scene.add(platonic)
+    platonic.userData.name = 'Door'
+  })
+}
+
+function createMenu() {
+  const gltfLoader = new GLTFLoader()
+
+  gltfLoader.load('/models/Menu.gltf', (gltf) => {
+    const platonic = gltf.scene.children[0]
+    const bakedMaterial = new THREE.MeshBasicMaterial({ map: menuTexture })
+    platonic.material = bakedMaterial
+    scene.add(platonic)
+    platonic.userData.name = 'menu'
+  })
+}
+function createCoffeemachine() {
+  const gltfLoader = new GLTFLoader()
+
+  gltfLoader.load('/models/CoffeeMachine.gltf', (gltf) => {
+    const platonic = gltf.scene.children[0]
+    const bakedMaterial = new THREE.MeshBasicMaterial({
+      map: coffeemachineTexture,
+    })
+    platonic.material = bakedMaterial
+    scene.add(platonic)
+    platonic.userData.name = 'coffeMachine'
+  })
+}
+
+function createRplant() {
+  const gltfLoader = new GLTFLoader()
+
+  gltfLoader.load('/models/R_Plant.gltf', (gltf) => {
+    const platonic = gltf.scene.children[0]
+    const bakedMaterial = new THREE.MeshBasicMaterial({
+      map: plantTexture,
+    })
+    platonic.material = bakedMaterial
+    scene.add(platonic)
+    platonic.userData.name = 'plant'
+  })
+}
+
+function createLplant() {
+  const gltfLoader = new GLTFLoader()
+
+  gltfLoader.load('/models/L_Plant.gltf', (gltf) => {
+    const platonic = gltf.scene.children[0]
+    const bakedMaterial = new THREE.MeshBasicMaterial({
+      map: plantTexture,
+    })
+    platonic.material = bakedMaterial
+    scene.add(platonic)
+    platonic.userData.name = 'plant'
+  })
+}
+
+createCounter()
+createTable()
+createProduct()
+createBase()
+createDoor()
+createMenu()
+createCoffeemachine()
+createRplant()
+createLplant()
 const raycaster = new THREE.Raycaster()
 const clickMouse = new THREE.Vector2()
 const moveMouse = new THREE.Vector2()
