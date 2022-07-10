@@ -116,7 +116,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 debugObject.clearColor = '#d8d2e9'
 var loader = new THREE.TextureLoader()
-var backgroundTexture = loader.load('https://i.imgur.com/upWSJlY.jpg')
+var backgroundTexture = loader.load('./Textures/background.jpg')
 scene.background = backgroundTexture
 
 console.log(canvas)
