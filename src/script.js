@@ -292,12 +292,23 @@ createRplant()
 createLplant()
 const raycaster = new THREE.Raycaster()
 const clickMouse = new THREE.Vector2()
+const touchMouse = new THREE.Vector2()
 const moveMouse = new THREE.Vector2()
 var clicked = new THREE.Object3D()
 var foundlist = []
-window.addEventListener('click', (event) => {
+
+// window.addEventListener('pointerdown', (event) => {
+//   console.log('touched')
+
+//   touchMouse.x = (event.clientX / window.innerWidth) * 2 - 1
+//   touchMouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+
+//   console.log(touchMouse)
+// })
+window.addEventListener('pointerdown', (event) => {
   clickMouse.x = (event.clientX / window.innerWidth) * 2 - 1
   clickMouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+  console.log(clickMouse)
 
   raycaster.setFromCamera(clickMouse, camera)
 
