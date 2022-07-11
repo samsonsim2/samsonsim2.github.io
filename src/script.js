@@ -93,9 +93,9 @@ const camera = new THREE.PerspectiveCamera(
   10000
 )
 
-// camera.position.x = 2
-// camera.position.y = 2
-camera.position.z = 300
+camera.position.x = 400
+camera.position.y = 300
+camera.position.z = 400
 
 scene.add(camera)
 const controls = new OrbitControls(camera, canvas)
@@ -236,7 +236,7 @@ function createMenu() {
     const bakedMaterial = new THREE.MeshBasicMaterial({ map: menuTexture })
     platonic.material = bakedMaterial
     scene.add(platonic)
-    platonic.userData.name = 'menu'
+    platonic.userData.name = 'Menu'
   })
 }
 function createCoffeemachine() {
@@ -301,19 +301,19 @@ window.addEventListener('click', (event) => {
 
   raycaster.setFromCamera(clickMouse, camera)
 
-  var foundfigure = raycaster.intersectObject(scene.children[4], true)
-  var foundplatonic = raycaster.intersectObject(scene.children[3], true)
-  var foundsphere = raycaster.intersectObject(scene.children[5], true)
+  var foundDoor = raycaster.intersectObject(scene.children[7], true) //door
+  var foundMenu = raycaster.intersectObject(scene.children[8], true)
+  var foundProduct = raycaster.intersectObject(scene.children[5], true)
 
   console.log(foundlist.length)
 
-  if (foundfigure.length > 0 && foundlist.length === 0) {
-    console.log(foundfigure)
-    clicked = foundfigure[0].object
+  if (foundDoor.length > 0 && foundlist.length === 0) {
+    console.log(foundDoor)
+    clicked = foundDoor[0].object
     foundlist.push(clicked)
     console.log(foundlist.length)
 
-    if (clicked.userData.name === 'figure') {
+    if (clicked.userData.name === 'Door') {
       tab.classList.add('Show')
       btn.classList.add('Show')
 
@@ -323,9 +323,9 @@ window.addEventListener('click', (event) => {
       console.log(x, y, z)
 
       gsap.to(camera.position, {
-        x: x - 40,
+        x: x - 20,
         y: y,
-        z: z + 50,
+        z: z + 100,
 
         duration: 1.5,
       })
@@ -338,16 +338,16 @@ window.addEventListener('click', (event) => {
       btn.addEventListener('click', (item) => {
         controls.target.set(0, 0, 0)
         gsap.to(camera.position, {
-          x: -40,
-          y: 100,
-          z: 300,
+          x: 400,
+          y: 300,
+          z: 400,
           duration: 1.5,
         })
 
         tab.classList.remove('Show')
         btn.classList.remove('Show')
         console.log('back button was clicked')
-        console.log(foundfigure.length)
+        console.log(foundDoor.length)
         foundlist.pop(clicked)
         console.log(foundlist.length)
         controls.enableRotate = true
@@ -355,13 +355,13 @@ window.addEventListener('click', (event) => {
     }
   }
 
-  if (foundplatonic.length > 0 && foundlist.length === 0) {
-    console.log(foundplatonic)
-    clicked = foundplatonic[0].object
+  if (foundMenu.length > 0 && foundlist.length === 0) {
+    console.log(foundMenu)
+    clicked = foundMenu[0].object
     foundlist.push(clicked)
-    console.log(foundplatonic.length)
+    console.log(foundMenu.length)
 
-    if (clicked.userData.name === 'platonic') {
+    if (clicked.userData.name === 'Menu') {
       tab.classList.add('Show')
       btn.classList.add('Show')
 
@@ -371,9 +371,9 @@ window.addEventListener('click', (event) => {
       console.log(x, y, z)
 
       gsap.to(camera.position, {
-        x: x - 40,
-        y: y,
-        z: z + 50,
+        x: x + 130,
+        y: y - 100,
+        z: z,
 
         duration: 1.5,
       })
@@ -386,16 +386,16 @@ window.addEventListener('click', (event) => {
       btn.addEventListener('click', (item) => {
         controls.target.set(0, 0, 0)
         gsap.to(camera.position, {
-          x: -40,
-          y: 100,
-          z: 300,
+          x: 400,
+          y: 300,
+          z: 400,
           duration: 1.5,
         })
 
         tab.classList.remove('Show')
         btn.classList.remove('Show')
         console.log('back button was clicked')
-        console.log(foundplatonic.length)
+        console.log(foundMenu.length)
         foundlist.pop(clicked)
         console.log(foundlist.length)
         controls.enableRotate = true
@@ -403,13 +403,13 @@ window.addEventListener('click', (event) => {
     }
   }
 
-  if (foundsphere.length > 0 && foundlist.length === 0) {
-    console.log(foundplatonic)
-    clicked = foundsphere[0].object
+  if (foundProduct.length > 0 && foundlist.length === 0) {
+    console.log(foundProduct)
+    clicked = foundProduct[0].object
     foundlist.push(clicked)
-    console.log(foundsphere.length)
+    console.log(foundProduct.length)
 
-    if (clicked.userData.name === 'sphere') {
+    if (clicked.userData.name === 'Product') {
       tab.classList.add('Show')
       btn.classList.add('Show')
 
@@ -419,8 +419,8 @@ window.addEventListener('click', (event) => {
       console.log(x, y, z)
 
       gsap.to(camera.position, {
-        x: x - 40,
-        y: y,
+        x: x + 100,
+        y: y + 150,
         z: z + 50,
 
         duration: 1.5,
@@ -434,18 +434,18 @@ window.addEventListener('click', (event) => {
       btn.addEventListener('click', (item) => {
         controls.target.set(0, 0, 0)
         gsap.to(camera.position, {
-          x: -40,
-          y: 100,
-          z: 300,
+          x: 400,
+          y: 300,
+          z: 400,
           duration: 1.5,
         })
 
         tab.classList.remove('Show')
         btn.classList.remove('Show')
         console.log('back button was clicked')
-        console.log(foundsphere.length)
+        console.log(foundProduct.length)
         foundlist.pop(clicked)
-        console.log(foundlist.length)
+        console.log(foundProduct.length)
         controls.enableRotate = true
       })
     }
